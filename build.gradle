@@ -7,3 +7,14 @@ buildscript {
     dependencies {
         classpath ("io.spring.gradle:dependency-management-plugin:0.6.0.RELEASE")
     }
+}
+
+plugins {
+    id "com.github.hierynomus.license" version "0.13.1"
+}
+
+group 'io.mifos.tools'
+version '0.1.0-BUILD-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'idea'
