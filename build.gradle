@@ -43,3 +43,17 @@ ext.versions = [
 configurations {
     compile.exclude group: 'commons-logging', module: 'commons-logging'
 }
+
+dependencies {
+    compile(
+            [group: 'org.springframework', name: 'spring-context', version: versions.spring],
+            [group: 'org.springframework.security', name: 'spring-security-core', version: versions.springsecurity],
+            [group: 'ch.qos.logback', name: 'logback-classic', version: versions.logback],
+            [group: 'org.slf4j', name: 'jcl-over-slf4j', version: versions.slf4j],
+            [group: 'com.google.code.findbugs', name: 'jsr305', version: versions.findbugs]
+    )
+    testCompile(
+            [group: 'junit', name: 'junit', version: versions.junit],
+            [group: 'org.springframework', name: 'spring-test', version: versions.springtest]
+    )
+}
