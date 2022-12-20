@@ -57,3 +57,13 @@ dependencies {
             [group: 'org.springframework', name: 'spring-test', version: versions.springtest]
     )
 }
+
+license {
+    header rootProject.file('HEADER')
+    strictCheck true
+    mapping {
+        java = 'SLASHSTAR_STYLE'
+    }
+    ext.year = Calendar.getInstance().get(Calendar.YEAR)
+    ext.name = 'The Mifos Initiative'
+}
