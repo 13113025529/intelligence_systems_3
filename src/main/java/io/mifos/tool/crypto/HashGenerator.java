@@ -26,3 +26,14 @@ import org.springframework.util.Base64Utils;
 import javax.annotation.Nonnegative;
 import javax.annotation.Nonnull;
 import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.PBEKeySpec;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
+
+@Component
+public class HashGenerator {
+
+  private final Environment environment;
+
+  @Autowired
