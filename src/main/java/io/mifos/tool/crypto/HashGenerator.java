@@ -37,3 +37,13 @@ public class HashGenerator {
   private final Environment environment;
 
   @Autowired
+  public HashGenerator(final Environment environment) {
+    super();
+    this.environment = environment;
+  }
+
+  @Nonnull
+  public byte[] hash(@Nonnull final String password, @Nonnull final byte[] salt,
+                     @Nonnegative final int iterationCount, @Nonnegative final int length) {
+    Assert.notNull(password, "Password must be given!");
+    Assert.notNull(salt, "Salt must be given!");
