@@ -47,3 +47,13 @@ public class HashGenerator {
                      @Nonnegative final int iterationCount, @Nonnegative final int length) {
     Assert.notNull(password, "Password must be given!");
     Assert.notNull(salt, "Salt must be given!");
+    Assert.isTrue(iterationCount > 0, "Iteration count must be greater than zero!");
+    Assert.isTrue(length > 0, "Length must be greater than zero!");
+
+    try {
+      final PBEKeySpec pbeKeySpec = new PBEKeySpec(password.toCharArray(), salt, iterationCount, length);
+      final SecretKeyFactory secretKeyFactory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
+      final byte[] encodedHash = secretKeyFactory.generateSecret(pbeKeySpec).getEncoded();
+      return encodedHash;
+    } catch (final NoSuchAlgorithmException | InvalidKeySpecException ex) {
+      throw new IllegalStateException(ex);
