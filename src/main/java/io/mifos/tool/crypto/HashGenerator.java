@@ -57,3 +57,14 @@ public class HashGenerator {
       return encodedHash;
     } catch (final NoSuchAlgorithmException | InvalidKeySpecException ex) {
       throw new IllegalStateException(ex);
+    }
+  }
+
+  public boolean isEqual(@Nonnull final byte[] knownHash, @Nonnull final byte[] password, @Nonnull final byte[] secret,
+                         @Nonnull final byte[] salt, @Nonnegative final int iterationCount, @Nonnegative final int length) {
+    Assert.notNull(knownHash, "Known hash must be given!");
+    Assert.notNull(password, "Password must be given!");
+    Assert.notNull(salt, "Salt must be given!");
+    Assert.isTrue(iterationCount > 0, "Iteration count must be greater than zero!");
+    Assert.isTrue(length > 0, "Length must be greater than zero!");
+    final byte[] internalSalt = EncodingUtils.concatenate(salt, secret);
