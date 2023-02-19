@@ -17,3 +17,15 @@
 package io.mifos.tool.crypto;
 
 import org.springframework.stereotype.Component;
+import org.springframework.util.Base64Utils;
+
+import javax.annotation.Nonnull;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+
+@Component
+public final class SaltGenerator {
+
+  public SaltGenerator() {
+    super();
+  }
