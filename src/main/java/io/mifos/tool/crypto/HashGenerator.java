@@ -68,3 +68,9 @@ public class HashGenerator {
     Assert.isTrue(iterationCount > 0, "Iteration count must be greater than zero!");
     Assert.isTrue(length > 0, "Length must be greater than zero!");
     final byte[] internalSalt = EncodingUtils.concatenate(salt, secret);
+
+    final byte[] computedHash = this.hash(Base64Utils.encodeToString(password), internalSalt, iterationCount, length);
+
+    return MessageDigest.isEqual(knownHash, computedHash);
+  }
+}
