@@ -24,3 +24,15 @@ import org.springframework.context.annotation.FilterType;
 @ComponentScan(
     basePackages = {
         "io.mifos.tool.crypto"
+    },
+    excludeFilters = {
+        @ComponentScan.Filter(
+            type = FilterType.ASSIGNABLE_TYPE,
+            value = {
+                CryptoSpringConfiguration.class
+            }
+        )
+    }
+)
+public class CryptoSpringConfiguration {
+}
