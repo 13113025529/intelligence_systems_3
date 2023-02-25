@@ -18,3 +18,9 @@ package io.mifos.tool.crypto.config;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.FilterType;
+
+@Configuration
+@ComponentScan(
+    basePackages = {
+        "io.mifos.tool.crypto"
