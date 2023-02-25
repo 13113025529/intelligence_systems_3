@@ -39,3 +39,6 @@ public final class SaltGenerator {
       return Base64Utils.encode(salt);
     } catch (final NoSuchAlgorithmException nsaex) {
       throw new IllegalStateException(nsaex);
+    }
+  }
+}
