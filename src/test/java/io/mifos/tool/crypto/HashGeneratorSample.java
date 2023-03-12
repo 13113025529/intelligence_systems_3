@@ -58,3 +58,16 @@ public class HashGeneratorSample {
 
   @Autowired
   private SaltGenerator saltGenerator;
+
+  @Autowired
+  private HashGenerator hashGenerator;
+
+  public HashGeneratorSample() {
+    super();
+  }
+
+  @Test
+  public void clientPasswordHashSpecification() throws Exception {
+    // 1. create user specific salt, username+tenant+TLD, Base64 URL encoded
+    final StringBuilder saltBuilder = new StringBuilder();
+    saltBuilder.append(USERNAME).append(TENANT).append(DOMAIN);
