@@ -34,3 +34,15 @@ import java.nio.file.Paths;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(
     classes = {
+        HashGeneratorSample.SampleSpringConfiguration.class
+    },
+    loader = AnnotationConfigContextLoader.class
+)
+public class HashGeneratorSample {
+
+  @Configuration
+  @EnableCrypto
+  public static class SampleSpringConfiguration {
+
+    public SampleSpringConfiguration() {
+      super();
