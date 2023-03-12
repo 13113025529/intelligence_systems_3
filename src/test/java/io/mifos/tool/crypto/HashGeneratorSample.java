@@ -46,3 +46,15 @@ public class HashGeneratorSample {
 
     public SampleSpringConfiguration() {
       super();
+    }
+  }
+
+  private static final String USERNAME = "nebuchadnezzar";
+  private static final String TENANT = "sippar";
+  private static final String DOMAIN = "babylon.ad";
+  private static final String PASSWORD = "m4duk";
+  private static final int ITERATION_COUNT = 4096;
+  private static final int HASH_LENGTH = 256;
+
+  @Autowired
+  private SaltGenerator saltGenerator;
