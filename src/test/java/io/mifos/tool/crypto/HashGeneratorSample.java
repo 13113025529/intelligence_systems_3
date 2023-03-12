@@ -25,3 +25,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.util.EncodingUtils;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.support.AnnotationConfigContextLoader;
+import org.springframework.util.Base64Utils;
+
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(
+    classes = {
