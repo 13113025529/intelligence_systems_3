@@ -71,3 +71,14 @@ public class HashGeneratorSample {
     // 1. create user specific salt, username+tenant+TLD, Base64 URL encoded
     final StringBuilder saltBuilder = new StringBuilder();
     saltBuilder.append(USERNAME).append(TENANT).append(DOMAIN);
+    final byte[] salt = Base64Utils.encode(saltBuilder.toString().getBytes());
+
+    // 2. encode user password URL safe with Base64
+    final String encodedPassword = Base64Utils.encodeToString(PASSWORD.getBytes());
+
+    // 3. create user password hash, to be send to service
+    final byte[] hash = this.hashGenerator.hash(encodedPassword, salt, ITERATION_COUNT, HASH_LENGTH);
+
+    Assert.assertNotNull(hash);
+    Assert.assertTrue(hash.length > 0);
+  }
