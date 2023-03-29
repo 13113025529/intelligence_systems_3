@@ -82,3 +82,11 @@ public class HashGeneratorSample {
     Assert.assertNotNull(hash);
     Assert.assertTrue(hash.length > 0);
   }
+
+  @Test
+  public void servicePasswordHashSpecification() throws Exception {
+    // 0. retrieve user password
+    final byte[] password = Files.readAllBytes(
+        Paths.get(getClass().getClassLoader()
+            .getResource(".password")
+            .toURI()));
