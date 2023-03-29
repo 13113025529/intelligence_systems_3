@@ -90,3 +90,12 @@ public class HashGeneratorSample {
         Paths.get(getClass().getClassLoader()
             .getResource(".password")
             .toURI()));
+
+    // 1. read stored secret
+    final byte[] storedSecret = Files.readAllBytes(
+        Paths.get(getClass().getClassLoader()
+            .getResource(".secret")
+            .toURI()));
+
+    // 2. create variable salt, to be stored with user info
+    final byte[] variableSalt = this.saltGenerator.createRandomSalt();
