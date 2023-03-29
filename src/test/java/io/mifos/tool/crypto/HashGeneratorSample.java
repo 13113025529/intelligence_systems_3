@@ -99,3 +99,9 @@ public class HashGeneratorSample {
 
     // 2. create variable salt, to be stored with user info
     final byte[] variableSalt = this.saltGenerator.createRandomSalt();
+
+    // 3. concatenate variable salt and secret to create unique salt for this user
+    final byte[] salt = EncodingUtils.concatenate(variableSalt, storedSecret);
+
+    // 4. create hash to be stored with user info
+    final byte[] hash = this.hashGenerator.hash(Base64Utils.encodeToString(password), salt, ITERATION_COUNT, HASH_LENGTH);
