@@ -105,3 +105,16 @@ public class HashGeneratorSample {
 
     // 4. create hash to be stored with user info
     final byte[] hash = this.hashGenerator.hash(Base64Utils.encodeToString(password), salt, ITERATION_COUNT, HASH_LENGTH);
+    Assert.assertNotNull(hash);
+    Assert.assertTrue(hash.length > 0);
+  }
+
+  @Test
+  public void clientPasswordIsEqual() throws Exception {
+    // 0. retrieve user password
+    final byte[] password = Files.readAllBytes(
+        Paths.get(getClass().getClassLoader()
+            .getResource(".password")
+            .toURI()));
+
+    // 1. read stored secret
