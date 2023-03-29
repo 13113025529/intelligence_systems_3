@@ -131,3 +131,11 @@ public class HashGeneratorSample {
 
     // 3. read stored hash from user info
     final byte[] storedHash = Files.readAllBytes(
+        Paths.get(getClass().getClassLoader()
+            .getResource(".hash")
+            .toURI()));
+
+    // 4. check if password is equal with stored hash
+    Assert.assertTrue(this.hashGenerator.isEqual(storedHash, password, storedSecret, storedSalt, ITERATION_COUNT, HASH_LENGTH));
+  }
+}
