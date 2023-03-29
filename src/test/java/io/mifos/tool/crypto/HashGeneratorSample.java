@@ -118,3 +118,16 @@ public class HashGeneratorSample {
             .toURI()));
 
     // 1. read stored secret
+    final byte[] storedSecret = Files.readAllBytes(
+        Paths.get(getClass().getClassLoader()
+            .getResource(".secret")
+            .toURI()));
+
+    // 2. read stored variable salt from user info
+    final byte[] storedSalt = Files.readAllBytes(
+        Paths.get(getClass().getClassLoader()
+            .getResource(".salt")
+            .toURI()));
+
+    // 3. read stored hash from user info
+    final byte[] storedHash = Files.readAllBytes(
